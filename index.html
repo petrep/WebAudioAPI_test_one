@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Play Audio Button Example</title>
+  </head>
+  <body>
+    <button id="play-button">Play Audio</button>
+    <script>
+      const audioContext = new AudioContext();
+      const oscillator = audioContext.createOscillator();
+      oscillator.type = 'sine';
+      oscillator.frequency.setValueAtTime(440, audioContext.currentTime);
+      oscillator.connect(audioContext.destination);
+      const playButton = document.getElementById('play-button');
+      playButton.addEventListener('click', () => {
+        oscillator.start();
+      });
+    </script>
+  </body>
+</html>
